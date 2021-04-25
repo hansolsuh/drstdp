@@ -59,6 +59,8 @@ def run_pipeline(pipeline, episode_count):
         pipeline.reset_state_variables()
         is_done = False
         while not is_done:
+            import pdb
+            pdb.set_trace()
             result = pipeline.env_step()
             pipeline.step(result)
 
