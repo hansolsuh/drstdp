@@ -58,6 +58,8 @@ def run_pipeline(pipeline, episode_count):
 
     opponent = RandomPlayer(environment, 'OpponentRandomPlayer')
 #    players = [player, opponent]
+    one = 0
+    two = 0
     for i in range(episode_count):
         total_reward = 0
         pipeline.reset_state_variables()
@@ -74,8 +76,15 @@ def run_pipeline(pipeline, episode_count):
             total_reward += reward
 
             is_done = result[2]
-        print(f"Episode {i} total reward:{total_reward}")
 
+        if result[1] == 1:
+            one += 1
+        else:
+            two += 1
+        print(f"Player {result[1]} Wins")
+        print(f"Episode {i} total reward:{total_reward}")
+    print("Player One Wins ", one)
+    print("Player Two Wins ", two)
 
 print("Training: ")
 run_pipeline(environment_pipeline, episode_count=100)
